@@ -17,16 +17,19 @@ pool:
 
 steps:
 - task: DotNetCoreCLI@2
+  displayName: 'Restore Project'
   inputs:
     command: 'restore'
     projects: $(projectName)
     feedsToUse: 'select'
 - task: DotNetCoreCLI@2
+  displayName: 'Build Project'
   inputs:
     command: 'build'
     projects: '**/*.csproj'
     arguments: '--configuration $(BildConfiguration)'
 - task: DotNetCoreCLI@2
+  displayName: 'Publish Project'
   inputs:
     command: 'publish'
     publishWebProjects: true
